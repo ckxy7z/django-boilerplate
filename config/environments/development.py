@@ -50,5 +50,5 @@ try:
     from local import *
 except ImportError:
     pass
-LOGGING['loggers']['django_request']['handlers'].append('console')
-LOGGING['loggers']['django_request']['level'] = 'DEBUG'
+LOGGING['loggers']['django.request']['handlers'].append('console')
+LOGGING['loggers']['django.request']['level'] = 'DEBUG'
