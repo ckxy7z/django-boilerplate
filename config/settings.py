@@ -113,9 +113,6 @@ TEMPLATE_DIRS = (
 )
 
 INSTALLED_APPS = (
-    # 'grappelli.dashboard',
-    'grappelli',
-
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -131,8 +128,9 @@ INSTALLED_APPS = (
     'django_extensions',
     'compressor',
 
-    # Project specific apps go here
-    # 'my_app',
+    # 'storages',
+    # 'imagekit',
+    # 'crispy_forms',
 )
 
 # A sample logging configuration. The only tangible logging
@@ -149,6 +147,10 @@ LOGGING = {
         }
     },
     'handlers': {
+        'console':{
+            'level':'DEBUG',
+            'class':'logging.StreamHandler',
+            },
         'mail_admins': {
             'level': 'ERROR',
             'filters': ['require_debug_false'],
@@ -178,5 +180,22 @@ COMPRESS_ROOT = STATIC_ROOT
 COMPRESS_CSS_FILTERS = ['compressor.filters.cssmin.CSSMinFilter']
 COMPRESS_JS_FILTERS = ['compressor.filters.jsmin.JSMinFilter']
 
-# django-grappelli
-GRAPPELLI_ADMIN_TITLE = "{{ project_name|title }} Admin"
+
+#################################
+# Amazon S3 storage credentials #
+#################################
+# AWS_ACCESS_KEY_ID = ...
+# AWS_SECRET_ACCESS_KEY = ....
+
+
+##########
+# Celery #
+##########
+USE_CELERY = False
+# if USE_CELERY:
+#     INSTALLED_APPS += (
+#     'djcelery',
+#     'kombu.transport.django')
+#     BROKER_URL = "django://"
+#     import djcelery
+#     djcelery.setup_loader()
